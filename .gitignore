@@ -64,7 +64,8 @@ typings/
 https 
 
 # data folder
-.data/*.json
+.data/users/*.json
+.data/tokens/*.json
 
 # logs folder
 .logs/*.log
