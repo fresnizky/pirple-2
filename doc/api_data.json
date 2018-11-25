@@ -29,6 +29,222 @@
   },
   {
     "type": "get",
+    "url": "/cart",
+    "title": "Get items from cart",
+    "name": "GetCart",
+    "group": "Cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User email</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Item list, each with type, size, qty and subtotal</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "total",
+            "description": "<p>Total amount of cart</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing Required Fields.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidCart",
+            "description": "<p>Could not find the specified cart.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidCartForUser",
+            "description": "<p>Cart does not belong to the user.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "post",
+    "url": "/cart",
+    "title": "Create cart adding items to cart",
+    "name": "PostCart",
+    "group": "Cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Array of item objects to add to the cart. They must include type and size. qty defaults to 1</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User email</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Item list, each with type, size, qty and subtotal</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "total",
+            "description": "<p>Total amount of cart</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing Required Fields.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidItems",
+            "description": "<p>Invalid items in item list.</p>"
+          }
+        ],
+        "Error 5xx": [
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "storeError",
+            "description": "<p>Could not save the cart.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "get",
     "url": "/menu",
     "title": "Get menu items",
     "name": "GetMenu",
@@ -86,7 +302,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/menu.js",
     "groupTitle": "Menu"
   },
   {
@@ -142,7 +358,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/tokens.js",
     "groupTitle": "Tokens"
   },
   {
@@ -210,7 +426,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/tokens.js",
     "groupTitle": "Tokens"
   },
   {
@@ -299,7 +515,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/tokens.js",
     "groupTitle": "Tokens"
   },
   {
@@ -361,7 +577,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/tokens.js",
     "groupTitle": "Tokens"
   },
   {
@@ -435,7 +651,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/users.js",
     "groupTitle": "User"
   },
   {
@@ -537,7 +753,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/users.js",
     "groupTitle": "User"
   },
   {
@@ -626,7 +842,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/users.js",
     "groupTitle": "User"
   },
   {
@@ -734,7 +950,7 @@
       }
     },
     "version": "0.0.0",
-    "filename": "./lib/handlers.js",
+    "filename": "./lib/users.js",
     "groupTitle": "User"
   }
 ]
