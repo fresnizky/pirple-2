@@ -1,7 +1,6 @@
 {
-    "pizzas": [
-        {
-            "name": "4 Quesos",
+    "pizzas": {
+        "4 quesos": {
             "ingredients": [
                 "salsa de tomate", 
                 "muzzarella",
@@ -15,8 +14,7 @@
                 "regular": 360
             }
         },
-        {
-            "name": "Anchoa",
+        "anchoa": {
             "ingredients": [
                 "salsa de tomate", 
                 "anchoas",
@@ -28,8 +26,7 @@
                 "slice": 31
             }
         },
-        {
-            "name": "Bolognesa",
+        "bolognesa": {
             "ingredients": [
                 "salsa de tomate", 
                 "muzzarella",
@@ -40,8 +37,7 @@
                 "regular": 345
             }
         },
-        {
-            "name": "Faina",
+        "faina": {
             "ingredients": [
                 "harina de garbanzos"
             ],
@@ -49,5 +45,5 @@
                 "slice": 31
             }
         }
-    ]
+    }
 }
