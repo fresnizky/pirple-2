@@ -1,0 +1,53 @@
+{
+    "pizzas": [
+        {
+            "name": "4 Quesos",
+            "ingredients": [
+                "salsa de tomate", 
+                "muzzarella",
+                "sardo",
+                "provolone",
+                "roquefort",
+                "aceitunas"
+            ],
+            "price": {
+                "large": 425,
+                "regular": 360
+            }
+        },
+        {
+            "name": "Anchoa",
+            "ingredients": [
+                "salsa de tomate", 
+                "anchoas",
+                "aceitunas"
+            ],
+            "price": {
+                "large": 265,
+                "regular": 235,
+                "slice": 31
+            }
+        },
+        {
+            "name": "Bolognesa",
+            "ingredients": [
+                "salsa de tomate", 
+                "muzzarella",
+                "salsa bolognesa"
+            ],
+            "price": {
+                "large": 395,
+                "regular": 345
+            }
+        },
+        {
+            "name": "Faina",
+            "ingredients": [
+                "harina de garbanzos"
+            ],
+            "price": {
+                "slice": 31
+            }
+        }
+    ]
+}

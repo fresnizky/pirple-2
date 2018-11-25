@@ -28,6 +28,68 @@
     "name": ""
   },
   {
+    "type": "get",
+    "url": "/menu",
+    "title": "Get menu items",
+    "name": "GetMenu",
+    "group": "Menu",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Valid Token ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "pizzas",
+            "description": "<p>Pizza list</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing required field.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          }
+        ],
+        "Error 5xx": [
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "menuError",
+            "description": "<p>Could not load menu.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/handlers.js",
+    "groupTitle": "Menu"
+  },
+  {
     "type": "delete",
     "url": "/tokens",
     "title": "Delete token, logging out user.",
