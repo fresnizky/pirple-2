@@ -66,6 +66,7 @@ https
 # data folder
 .data/users/*.json
 .data/tokens/*.json
+.data/cart/*.json
 
 # logs folder
 .logs/*.log
