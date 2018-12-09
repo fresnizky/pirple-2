@@ -28,6 +28,87 @@
     "name": ""
   },
   {
+    "type": "delete",
+    "url": "/cart",
+    "title": "Delete cart",
+    "name": "DeleteCart",
+    "group": "Cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token ID</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing Required Fields.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "cartNotFound",
+            "description": "<p>Could not find the specified cart.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidUserForCart",
+            "description": "<p>Cart does not belong to the user.</p>"
+          }
+        ],
+        "Error 5xx": [
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "cartDeleteError",
+            "description": "<p>Could not delete cart.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
     "type": "get",
     "url": "/cart",
     "title": "Get items from cart",
@@ -225,6 +306,139 @@
           {
             "group": "Error 4xx",
             "optional": false,
+            "field": "cartNotFound",
+            "description": "<p>Could not find the specified cart.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "cartUserError",
+            "description": "<p>Cart does not belong to the user.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "userNotFound",
+            "description": "<p>User not found.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "paymentError",
+            "description": "<p>There was an error processing the payment.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "emailError",
+            "description": "<p>There was an error sending confirmation email.</p>"
+          }
+        ],
+        "Error 5xx": [
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "hashError",
+            "description": "<p>Could not hash the user's email.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/order.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "post",
+    "url": "/cart",
+    "title": "Create cart adding items to cart",
+    "name": "PostCart",
+    "group": "Cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Array of item objects to add to the cart. They must include type and size. qty defaults to 1</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>User email</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Item list, each with type, size, qty and subtotal</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "total",
+            "description": "<p>Total amount of cart</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing Required Fields.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
             "field": "invalidItems",
             "description": "<p>Invalid items in item list.</p>"
           }
@@ -235,6 +449,160 @@
             "optional": false,
             "field": "storeError",
             "description": "<p>Could not save the cart.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "./lib/cart.js",
+    "groupTitle": "Cart"
+  },
+  {
+    "type": "put",
+    "url": "/cart",
+    "title": "Modify items in cart. If item qty is 0 or less it's removed from the cart",
+    "name": "PutCart",
+    "group": "Cart",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "email",
+            "description": "<p>Email</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Cart ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "items",
+            "description": "<p>Array of item objects to add or edit to the cart. They must include type and size. qty defaults to 1, and can be negative</p>"
+          }
+        ]
+      }
+    },
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "string",
+            "optional": false,
+            "field": "token",
+            "description": "<p>Token ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "object",
+            "optional": false,
+            "field": "cart",
+            "description": "<p>Cart object</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "cart.email",
+            "description": "<p>User email</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "cart.id",
+            "description": "<p>Cart ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "cart.items",
+            "description": "<p>Item list, each with type, size, qty and subtotal</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "number",
+            "optional": false,
+            "field": "cart.total",
+            "description": "<p>Total amount of cart</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "array",
+            "optional": false,
+            "field": "invalidObjects",
+            "description": "<p>Invalid objects array</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingFields",
+            "description": "<p>Missing Required Fields.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "missingToken",
+            "description": "<p>Missing required token in header or token is invalid.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "cartNotFound",
+            "description": "<p>Could not find the specified cart.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidUserForCart",
+            "description": "<p>Cart does not belong to the user.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "invalidItems",
+            "description": "<p>Invalid items in item list.</p>"
+          }
+        ],
+        "Error 5xx": [
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "storeError",
+            "description": "<p>Could not save the cart.</p>"
+          },
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "menuError",
+            "description": "<p>Could not load menu.</p>"
+          },
+          {
+            "group": "Error 5xx",
+            "optional": false,
+            "field": "cartUpdateError",
+            "description": "<p>Could not update cart.</p>"
           }
         ]
       }
