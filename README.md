@@ -17,6 +17,8 @@ You are building the API for a pizza-delivery company. Don't worry about a front
 6. When an order is placed, you should email the user a receipt. You should integrate with the sandbox of Mailgun.com for this. Note: Every Mailgun account comes with a sandbox email account domain (whatever@sandbox123.mailgun.org) that you can send from by default. So, there's no need to setup any DNS for your domain for this task https://documentation.mailgun.com/en/latest/faqs.html#how-do-i-pick-a-domain-name-for-my-mailgun-account
 
 ## Documentation
+API Documentation is in `/doc` folder
+
 ### Create Certificate for HTTPS Server
 Run the following commands to create the certificate files needed to start the HTTPS server. If these files are not present only the HTTP server will start
 ```
